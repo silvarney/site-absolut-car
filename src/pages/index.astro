@@ -1,16 +1,48 @@
 ---
-
+// Página principal
+import Header from '../components/Header.astro';
+import Hero from '../components/Hero.astro';
+import SearchCard from '../components/SearchCard.astro';
+import ServicesCarousel from '../components/ServicesCarousel.astro';
+import WorkGallery from '../components/WorkGallery.astro';
+import Testimonials from '../components/Testimonials.astro';
+import Contact from '../components/Contact.astro';
+import Footer from '../components/Footer.astro';
 ---
 
-<html lang="en">
+<html lang="pt-BR">
 	<head>
 		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
+		<link rel="icon" type="image/x-icon" href="/img/ab.ico" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<meta name="description" content="Absolut Car - Oficina especializada em serviços automotivos com qualidade e garantia. Revisão, manutenção, freios, ar condicionado e muito mais." />
+		<meta name="keywords" content="oficina, serviços automotivos, revisão, manutenção, freios, ar condicionado, alinhamento, troca de óleo" />
+		<meta name="author" content="Absolut Car" />
+		<meta name="robots" content="index, follow" />
 		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
+		<title>Absolut Car - Sua Oficina de Confiança | Serviços Automotivos Especializados</title>
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+		<noscript><link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet"></noscript>
 	</head>
-	<body>
-		<h1>Astro</h1>
+	<body class="font-roboto text-gray-800 leading-relaxed bg-white min-h-screen flex flex-col">
+		<Header />
+
+		<main class="flex-1">
+			<Hero />
+
+			<SearchCard />
+
+			<ServicesCarousel />
+
+			<WorkGallery />
+
+			<Testimonials />
+
+			<Contact />
+		</main>
+
+		<Footer />
 	</body>
 </html>
