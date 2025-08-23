@@ -1,0 +1,33 @@
+---
+// SearchCard Component
+---
+
+<section id="servicos-busca" class="-mt-12 relative z-10" aria-labelledby="search-title">
+	<div class="max-w-6xl mx-auto px-5">
+		<div class="servicos-card bg-white p-8 rounded-2xl shadow-lg text-center">
+			<h2 id="search-title" class="text-gray-800 mb-2 font-semibold text-xl">
+				Buscar Serviços
+			</h2>
+			<p class="text-gray-600 mb-6 text-sm">
+				Encontre o serviço que você precisa
+			</p>
+			<form class="search-box flex gap-2.5 flex-col md:flex-row" role="search" aria-label="Buscar serviços automotivos">
+				<label for="service-search" class="sr-only">Buscar serviços</label>
+				<input 
+					id="service-search"
+					type="text" 
+					placeholder="Ex: Troca de óleo, Alinhamento..." 
+					class="flex-1 py-3 px-4 border border-gray-300 rounded text-sm focus:outline-none focus:ring-2 focus:ring-orange-600 focus:border-transparent"
+					aria-describedby="search-description"
+				/>
+				<button type="submit" class="btn-buscar bg-orange-700 text-white border-none py-3 px-8 rounded-lg cursor-pointer font-medium transition-all duration-300 flex items-center justify-center gap-2 hover:bg-orange-800 w-full md:w-auto" aria-label="Buscar serviços">
+					<svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+					<path d="M23.384,21.619,16.855,15.09a9.284,9.284,0,1,0-1.768,1.768l6.529,6.529a1.266,1.266,0,0,0,1.768,0A1.251,1.251,0,0,0,23.384,21.619ZM9.625,16.5A6.875,6.875,0,1,1,16.5,9.625,6.883,6.883,0,0,1,9.625,16.5Z"/>
+				</svg>
+					Buscar
+				</button>
+				<span id="search-description" class="sr-only">Digite o nome do serviço automotivo que você procura</span>
+			</form>
+		</div>
+	</div>
+</section>
