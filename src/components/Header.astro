@@ -2,7 +2,11 @@
 // Header Component
 ---
 
+<<<<<<< HEAD
 <header class="fixed top-0 left-0 right-0 bg-white/90 backdrop-blur-md shadow-sm text-gray-800 py-3 z-50 transition-all duration-300" role="banner" style="backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);">
+=======
+<header class="fixed top-0 left-0 right-0 bg-white/90 backdrop-blur-md shadow-sm text-gray-800 py-3 z-50 transition-all duration-300" role="banner">
+>>>>>>> 7bc4f982cb72040eb20fa13eb4485cf368fac17c
 	<div class="max-w-6xl mx-auto px-5 flex justify-between items-center">
 		<!-- Logo -->
 		<div class="flex items-center flex-1">
@@ -49,11 +53,16 @@
 	</div>
 </header>
 
+<<<<<<< HEAD
 <!-- Mobile Menu Overlay -->
 <div class="mobile-menu-overlay"></div>
 
 <!-- Mobile Menu -->
 	<div class="mobile-menu" role="dialog" aria-modal="true" aria-labelledby="mobile-menu-title">
+=======
+<!-- Mobile Menu -->
+<div class="mobile-menu fixed top-0 -right-full w-4/5 max-w-sm h-screen bg-white z-50 transition-all duration-300 flex flex-col shadow-xl" role="dialog" aria-modal="true" aria-labelledby="mobile-menu-title">
+>>>>>>> 7bc4f982cb72040eb20fa13eb4485cf368fac17c
 	<div class="mobile-menu-header flex justify-between items-center p-4 border-b border-gray-200">
 		<h2 id="mobile-menu-title" class="m-0 text-xl">Menu</h2>
 		<button class="close-menu bg-transparent border-none text-2xl cursor-pointer" onclick="toggleMobileMenu()" aria-label="Fechar menu de navegação">
@@ -63,7 +72,11 @@
 		</button>
 	</div>
 
+<<<<<<< HEAD
 	<nav class="p-4 flex-1 overflow-y-auto" role="navigation" aria-label="Menu mobile" style="min-height: 0;">
+=======
+	<nav class="p-4 flex-1" role="navigation" aria-label="Menu mobile">
+>>>>>>> 7bc4f982cb72040eb20fa13eb4485cf368fac17c
 		<ul class="list-none p-0">
 			<li class="mb-6">
 				<a href="#" class="text-gray-800 no-underline text-lg block">Início</a>
@@ -83,6 +96,7 @@
 		</ul>
 	</nav>
 
+<<<<<<< HEAD
 	<div class="mobile-menu-footer p-4 border-t border-gray-200 flex-shrink-0" style="margin-top: auto;">
 		<button class="w-full bg-orange-600 text-white py-3 px-4 rounded-lg hover:bg-orange-700 transition-colors flex items-center justify-center gap-2">
 			<svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
@@ -184,4 +198,27 @@
 			});
 		});
 	});
+=======
+	<div class="mobile-menu-footer p-4 border-t border-gray-200 flex flex-col gap-4">
+		<a href="#" class="menu-action no-underline text-gray-800 flex items-center gap-2.5 text-base">
+			<svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+					<path d="M12,4A4,4 0 0,1 16,8A4,4 0 0,1 12,12A4,4 0 0,1 8,8A4,4 0 0,1 12,4M12,14C16.42,14 20,15.79 20,18V20H4V18C4,15.79 7.58,14 12,14Z"/>
+				</svg>
+			Fazer Login
+		</a>
+		<a href="#" class="btn-vender bg-orange-600 text-white py-3 px-4 rounded text-center mt-2 no-underline">
+			<svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+					<path d="M5,11L6.5,6.5H17.5L19,11M17.5,16A1.5,1.5 0 0,1 16,14.5A1.5,1.5 0 0,1 17.5,13A1.5,1.5 0 0,1 19,14.5A1.5,1.5 0 0,1 17.5,16M6.5,16A1.5,1.5 0 0,1 5,14.5A1.5,1.5 0 0,1 6.5,13A1.5,1.5 0 0,1 8,14.5A1.5,1.5 0 0,1 6.5,16M18.92,6C18.72,5.42 18.16,5 17.5,5H6.5C5.84,5 5.28,5.42 5.08,6L3,12V20A1,1 0 0,0 4,21H5A1,1 0 0,0 6,20V19H18V20A1,1 0 0,0 19,21H20A1,1 0 0,0 21,20V12L18.92,6Z"/>
+				</svg>
+			Vender meu carro
+		</a>
+	</div>
+</div>
+
+<script>
+	function toggleMobileMenu() {
+		const mobileMenu = document.querySelector('.mobile-menu');
+		mobileMenu.classList.toggle('active');
+	}
+>>>>>>> 7bc4f982cb72040eb20fa13eb4485cf368fac17c
 </script>
