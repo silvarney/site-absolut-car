@@ -1,174 +1,462 @@
 ---
-// Header Component
+// Header Component - Nova Abordagem com Data Attributes
 ---
 
-<header class="fixed top-0 left-0 right-0 bg-white/90 backdrop-blur-md shadow-sm text-gray-800 py-3 z-50 transition-all duration-300" role="banner" style="backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);">
-	<div class="max-w-6xl mx-auto px-5 flex justify-between items-center">
+<header class="header-main" data-header="main">
+	<div class="header-container">
 		<!-- Logo -->
-		<div class="flex items-center flex-1">
-			<a href="#" aria-label="Ir para página inicial">
-				<img src="/img/logo_absolut.webp" alt="Absolut Car - Logo da empresa" class="h-12 w-auto" />
+		<div class="logo-section">
+			<a href="#" class="logo-link">
+				<img src="/img/logo_absolut.webp" alt="Absolut Car" class="logo-img" />
 			</a>
 		</div>
 
 		<!-- Desktop Navigation -->
-		<nav class="desktop-nav ml-auto mr-5 items-center hidden md:flex" role="navigation" aria-label="Menu principal">
-			<ul class="flex list-none">
-				<li class="ml-6">
-					<a href="#" class="text-gray-800 no-underline transition-colors duration-300 text-sm hover:text-orange-600">Início</a>
-				</li>
-				<li class="ml-6">
-					<a href="#principais-servicos" class="text-gray-800 no-underline transition-colors duration-300 text-sm hover:text-orange-600">Serviços</a>
-				</li>
-				<li class="ml-6">
-					<a href="#trabalho-imagens" class="text-gray-800 no-underline transition-colors duration-300 text-sm hover:text-orange-600">Trabalhos</a>
-				</li>
-				<li class="ml-6">
-					<a href="#depoimentos" class="text-gray-800 no-underline transition-colors duration-300 text-sm hover:text-orange-600">Depoimentos</a>
-				</li>
-				<li class="ml-6">
-					<a href="#contato" class="text-gray-800 no-underline transition-colors duration-300 text-sm hover:text-orange-600">Contato</a>
-				</li>
+		<nav class="desktop-nav">
+			<ul class="nav-list">
+				<li><a href="#" class="nav-link">Início</a></li>
+				<li><a href="#principais-servicos" class="nav-link">Serviços</a></li>
+				<li><a href="#trabalho-imagens" class="nav-link">Trabalhos</a></li>
+				<li><a href="#depoimentos" class="nav-link">Depoimentos</a></li>
+				<li><a href="#contato" class="nav-link">Contato</a></li>
 			</ul>
 		</nav>
 
-		<!-- Login Button -->
-		<a href="#" class="btn-login bg-orange-600 text-white py-2 px-4 rounded-full no-underline text-sm font-medium flex items-center gap-1 hidden md:flex" aria-label="Fazer login na conta">
-			<svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+		<!-- WhatsApp Button Desktop -->
+		<a href="#" class="whatsapp-btn desktop-only">
+			<svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
 				<path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893A11.821 11.821 0 0020.051 3.488"/>
 			</svg>
-			<small class="text-xs">Whatsapp</small>
+			<span>WhatsApp</span>
 		</a>
 
-		<!-- Mobile Menu Toggle -->
-		<button class="menu-toggle bg-transparent border-none text-2xl cursor-pointer text-gray-800 md:hidden" onclick="toggleMobileMenu()" aria-label="Abrir menu de navegação" aria-expanded="false">
-			<svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-				<path d="M3,6H21V8H3V6M3,11H21V13H3V11M3,16H21V18H3V16Z"/>
-			</svg>
+		<!-- Mobile Menu Button -->
+		<button class="mobile-menu-btn mobile-only" data-menu-toggle="button">
+			<span class="hamburger-line"></span>
+			<span class="hamburger-line"></span>
+			<span class="hamburger-line"></span>
 		</button>
 	</div>
 </header>
 
 <!-- Mobile Menu Overlay -->
-<div class="mobile-menu-overlay"></div>
+<div class="mobile-overlay" data-menu-overlay="overlay"></div>
 
 <!-- Mobile Menu -->
-<div class="mobile-menu" role="dialog" aria-modal="true" aria-labelledby="mobile-menu-title">
-	<div class="mobile-menu-header flex justify-between items-center p-4 border-b border-gray-200">
-		<h2 id="mobile-menu-title" class="m-0 text-xl">Menu</h2>
-		<button class="close-menu bg-transparent border-none text-2xl cursor-pointer" onclick="toggleMobileMenu()" aria-label="Fechar menu de navegação">
-			<svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-				<path d="M19,6.41L17.59,5L12,10.59L6.41,5L5,6.41L10.59,12L5,17.59L6.41,19L12,13.41L17.59,19L19,17.59L13.41,12L19,6.41Z"/>
-			</svg>
+<div class="mobile-menu" data-mobile-menu="menu">
+	<div class="mobile-header">
+		<img src="/img/logo_absolut.webp" alt="Absolut Car" class="mobile-logo" />
+		<button class="close-btn" data-menu-close="button">
+			<span class="close-line"></span>
+			<span class="close-line"></span>
 		</button>
 	</div>
-
-	<nav class="p-4 flex-1 overflow-y-auto" role="navigation" aria-label="Menu mobile" style="min-height: 0;">
-		<ul class="list-none p-0">
-			<li class="mb-6">
-				<a href="#" class="text-gray-800 no-underline text-lg block">Início</a>
-			</li>
-			<li class="mb-6">
-				<a href="#principais-servicos" class="text-gray-800 no-underline text-lg block">Serviços</a>
-			</li>
-			<li class="mb-6">
-				<a href="#trabalho-imagens" class="text-gray-800 no-underline text-lg block">Trabalhos</a>
-			</li>
-			<li class="mb-6">
-				<a href="#depoimentos" class="text-gray-800 no-underline text-lg block">Depoimentos</a>
-			</li>
-			<li class="mb-6">
-				<a href="#contato" class="text-gray-800 no-underline text-lg block">Contato</a>
-			</li>
+	
+	<nav class="mobile-nav">
+		<ul class="mobile-nav-list">
+			<li><a href="#" class="mobile-nav-link">Início</a></li>
+			<li><a href="#principais-servicos" class="mobile-nav-link">Serviços</a></li>
+			<li><a href="#trabalho-imagens" class="mobile-nav-link">Trabalhos</a></li>
+			<li><a href="#depoimentos" class="mobile-nav-link">Depoimentos</a></li>
+			<li><a href="#contato" class="mobile-nav-link">Contato</a></li>
 		</ul>
 	</nav>
-
-	<div class="mobile-menu-footer p-4 border-t border-gray-200 flex-shrink-0" style="margin-top: auto;">
-		<button class="w-full bg-orange-600 text-white py-3 px-4 rounded-lg hover:bg-orange-700 transition-colors flex items-center justify-center gap-2">
-			<svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-				<path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.890-5.335 11.893-11.893A11.821 11.821 0 0020.051 3.488"/>
+	
+	<div class="mobile-footer">
+		<a href="#" class="mobile-whatsapp">
+			<svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+				<path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893A11.821 11.821 0 0020.051 3.488"/>
 			</svg>
-			Falar no WhatsApp
-		</button>
+			<span>Falar no WhatsApp</span>
+		</a>
 	</div>
 </div>
 
 <style>
-	.mobile-menu {
+	/* Reset e Base */
+	* {
+		box-sizing: border-box;
+	}
+
+	/* Header Principal */
+	.header-main {
 		position: fixed;
 		top: 0;
-		right: -100%;
-		width: 80%;
-		max-width: 384px;
-		height: 100vh;
-		height: 100dvh; /* Dynamic viewport height for mobile */
-		background: white;
-		z-index: 50;
-		transition: right 0.3s ease;
+		left: 0;
+		right: 0;
+		width: 100%;
+		height: 70px;
+		background: rgba(255, 255, 255, 0.95);
+		backdrop-filter: blur(10px);
+		-webkit-backdrop-filter: blur(10px);
+		box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+		z-index: 1000;
+		display: flex;
+		align-items: center;
+	}
+
+	.header-container {
+		max-width: 1200px;
+		width: 100%;
+		margin: 0 auto;
+		padding: 0 20px;
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+	}
+
+	/* Logo */
+	.logo-section {
+		display: flex;
+		align-items: center;
+	}
+
+	.logo-link {
+		display: block;
+		text-decoration: none;
+	}
+
+	.logo-img {
+		height: 48px;
+		width: auto;
+		display: block;
+	}
+
+	/* Desktop Navigation */
+	.desktop-nav {
+		display: none;
+	}
+
+	.nav-list {
+		display: flex;
+		list-style: none;
+		margin: 0;
+		padding: 0;
+		gap: 24px;
+	}
+
+	.nav-link {
+		color: #374151;
+		text-decoration: none;
+		font-size: 14px;
+		transition: color 0.3s ease;
+	}
+
+	.nav-link:hover {
+		color: #ea580c;
+	}
+
+	/* WhatsApp Button Desktop */
+	.whatsapp-btn {
+		background: #ea580c;
+		color: white;
+		padding: 8px 16px;
+		border-radius: 24px;
+		text-decoration: none;
+		font-size: 14px;
+		display: none;
+		align-items: center;
+		gap: 8px;
+		transition: background-color 0.3s ease;
+	}
+
+	.whatsapp-btn:hover {
+		background: #c2410c;
+	}
+
+	/* Mobile Menu Button */
+	.mobile-menu-btn {
+		background: none;
+		border: none;
+		cursor: pointer;
+		padding: 8px;
 		display: flex;
 		flex-direction: column;
-		box-shadow: -2px 0 10px rgba(0, 0, 0, 0.1);
+		gap: 4px;
+		width: 32px;
+		height: 32px;
+		align-items: center;
+		justify-content: center;
 	}
 
-	.mobile-menu.active {
-		right: 0;
+	.hamburger-line {
+		width: 20px;
+		height: 2px;
+		background: #374151;
+		transition: all 0.3s ease;
+		transform-origin: center;
 	}
 
-	.mobile-menu-overlay {
+	/* Mobile Menu Button Animation */
+	.mobile-menu-btn[data-state="open"] .hamburger-line:nth-child(1) {
+		transform: rotate(45deg) translate(5px, 5px);
+	}
+
+	.mobile-menu-btn[data-state="open"] .hamburger-line:nth-child(2) {
+		opacity: 0;
+	}
+
+	.mobile-menu-btn[data-state="open"] .hamburger-line:nth-child(3) {
+		transform: rotate(-45deg) translate(7px, -6px);
+	}
+
+	/* Mobile Overlay */
+	.mobile-overlay {
 		position: fixed;
 		top: 0;
 		left: 0;
 		width: 100%;
-		height: 100%;
+		height: 100vh;
 		background: rgba(0, 0, 0, 0.5);
-		z-index: 49;
+		z-index: 999;
 		opacity: 0;
 		visibility: hidden;
-		transition: opacity 0.3s ease, visibility 0.3s ease;
+		transition: all 0.3s ease;
 	}
 
-	.mobile-menu-overlay.active {
+	.mobile-overlay[data-state="open"] {
 		opacity: 1;
 		visibility: visible;
 	}
 
+	/* Mobile Menu */
+	.mobile-menu {
+		position: fixed;
+		top: 0;
+		right: 0;
+		width: 300px;
+		height: 100vh;
+		background: white;
+		z-index: 1001;
+		transform: translateX(100%);
+		transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+		display: flex;
+		flex-direction: column;
+		box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
+	}
+
+	.mobile-menu[data-state="open"] {
+		transform: translateX(0);
+	}
+
+	/* Mobile Header */
+	.mobile-header {
+		padding: 20px;
+		border-bottom: 1px solid #e5e7eb;
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		flex-shrink: 0;
+	}
+
+	.mobile-logo {
+		height: 32px;
+		width: auto;
+	}
+
+	.close-btn {
+		background: none;
+		border: none;
+		cursor: pointer;
+		padding: 8px;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		width: 32px;
+		height: 32px;
+		position: relative;
+	}
+
+	.close-line {
+		position: absolute;
+		width: 16px;
+		height: 2px;
+		background: #374151;
+		transition: all 0.3s ease;
+	}
+
+	.close-line:nth-child(1) {
+		transform: rotate(45deg);
+	}
+
+	.close-line:nth-child(2) {
+		transform: rotate(-45deg);
+	}
+
+	/* Mobile Navigation */
+	.mobile-nav {
+		padding: 20px;
+		flex: 1;
+		overflow-y: auto;
+	}
+
+	.mobile-nav-list {
+		list-style: none;
+		margin: 0;
+		padding: 0;
+	}
+
+	.mobile-nav-list li {
+		margin-bottom: 20px;
+	}
+
+	.mobile-nav-link {
+		color: #374151;
+		text-decoration: none;
+		font-size: 18px;
+		display: block;
+		padding: 10px 0;
+		transition: color 0.3s ease;
+	}
+
+	.mobile-nav-link:hover {
+		color: #ea580c;
+	}
+
+	/* Mobile Footer */
+	.mobile-footer {
+		padding: 20px;
+		border-top: 1px solid #e5e7eb;
+		flex-shrink: 0;
+	}
+
+	.mobile-whatsapp {
+		background: #ea580c;
+		color: white;
+		padding: 12px;
+		border-radius: 8px;
+		text-decoration: none;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		gap: 8px;
+		transition: background-color 0.3s ease;
+	}
+
+	.mobile-whatsapp:hover {
+		background: #c2410c;
+	}
+
+	/* Responsive */
 	@media (min-width: 768px) {
+		.desktop-nav {
+			display: block;
+		}
+
+		.whatsapp-btn.desktop-only {
+			display: flex;
+		}
+
+		.mobile-only {
+			display: none !important;
+		}
+
 		.mobile-menu,
-		.mobile-menu-overlay {
+		.mobile-overlay {
 			display: none;
+		}
+	}
+
+	@media (max-width: 767px) {
+		.desktop-only {
+			display: none !important;
+		}
+
+		.mobile-only {
+			display: flex;
 		}
 	}
 </style>
 
 <script>
-	function toggleMobileMenu() {
-		const mobileMenu = document.querySelector('.mobile-menu');
-		const overlay = document.querySelector('.mobile-menu-overlay');
-		const menuToggle = document.querySelector('.menu-toggle');
-
-		if (mobileMenu && overlay && menuToggle) {
-			mobileMenu.classList.toggle('active');
-			overlay.classList.toggle('active');
+	// Mobile Menu Controller usando Data Attributes
+	class MobileMenuController {
+		constructor() {
+			this.menuButton = document.querySelector('[data-menu-toggle="button"]');
+			this.closeButton = document.querySelector('[data-menu-close="button"]');
+			this.overlay = document.querySelector('[data-menu-overlay="overlay"]');
+			this.menu = document.querySelector('[data-mobile-menu="menu"]');
+			this.menuLinks = document.querySelectorAll('.mobile-nav-link');
 			
-			const isOpen = mobileMenu.classList.contains('active');
-			menuToggle.setAttribute('aria-expanded', isOpen.toString());
+			this.isOpen = false;
+			this.init();
 		}
-	}
 
-	// Close menu when clicking overlay
-	document.addEventListener('DOMContentLoaded', function() {
-		const overlay = document.querySelector('.mobile-menu-overlay');
-		const mobileMenu = document.querySelector('.mobile-menu');
-		const menuToggle = document.querySelector('.menu-toggle');
+		init() {
+			if (this.menuButton) {
+				this.menuButton.addEventListener('click', () => this.toggleMenu());
+			}
 
-		if (overlay) {
-			overlay.addEventListener('click', function() {
-				if (mobileMenu && menuToggle && overlay) {
-					mobileMenu.classList.remove('active');
-					overlay.classList.remove('active');
-					menuToggle.setAttribute('aria-expanded', 'false');
+			if (this.closeButton) {
+				this.closeButton.addEventListener('click', () => this.closeMenu());
+			}
+
+			if (this.overlay) {
+				this.overlay.addEventListener('click', () => this.closeMenu());
+			}
+
+			// Fechar menu ao clicar nos links
+			this.menuLinks.forEach(link => {
+				link.addEventListener('click', () => this.closeMenu());
+			});
+
+			// Fechar menu com ESC
+			document.addEventListener('keydown', (e) => {
+				if (e.key === 'Escape' && this.isOpen) {
+					this.closeMenu();
 				}
 			});
 		}
+
+		toggleMenu() {
+			if (this.isOpen) {
+				this.closeMenu();
+			} else {
+				this.openMenu();
+			}
+		}
+
+		openMenu() {
+			this.isOpen = true;
+			
+			if (this.menuButton) {
+				this.menuButton.setAttribute('data-state', 'open');
+			}
+
+			if (this.overlay) {
+				this.overlay.setAttribute('data-state', 'open');
+			}
+
+			if (this.menu) {
+				this.menu.setAttribute('data-state', 'open');
+			}
+
+			// Prevenir scroll do body
+			document.body.style.overflow = 'hidden';
+		}
+
+		closeMenu() {
+			this.isOpen = false;
+			
+			if (this.menuButton) {
+				this.menuButton.removeAttribute('data-state');
+			}
+
+			if (this.overlay) {
+				this.overlay.removeAttribute('data-state');
+			}
+
+			if (this.menu) {
+				this.menu.removeAttribute('data-state');
+			}
+
+			// Restaurar scroll do body
+			document.body.style.overflow = 'auto';
+		}
+	}
+
+	// Inicializar quando o DOM estiver carregado
+	document.addEventListener('DOMContentLoaded', () => {
+		new MobileMenuController();
 	});
 </script>
