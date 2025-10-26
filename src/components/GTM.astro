@@ -1,0 +1,29 @@
+---
+// Componente simples para injetar Google Tag Manager
+// Uso: <GTM position="head" /> para o script no <head>
+//      <GTM position="body" /> para o <noscript> logo após a abertura do <body>
+const _props = (typeof Astro !== 'undefined' && Astro.props) ? Astro.props : {};
+const position = _props.position ?? 'head';
+// Obter a variável de ambiente pública do build (espera-se que o Vite/Astro a exponha como import.meta.env)
+// Evitamos checagens complexas que podem quebrar o parser; se não existir, usamos string vazia.
+const gtmId = import.meta.env && import.meta.env.PUBLIC_GTM_ID ? String(import.meta.env.PUBLIC_GTM_ID) : '';
+
+// Construir os snippets como strings no frontmatter para evitar conflitos com o parser
+const headSnippet = gtmId
+  ? `(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start': new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','${gtmId}');`
+  : '';
+
+const bodySnippet = gtmId
+  ? `<iframe src="https://www.googletagmanager.com/ns.html?id=${gtmId}" height="0" width="0" style="display:none;visibility:hidden"></iframe>`
+  : '';
+
+---
+
+{gtmId && position === 'head' ? (
+  /* Injetar o script construído no frontmatter com set:html para evitar problemas de parsing */
+  <script set:html={headSnippet}></script>
+) : null}
+
+{gtmId && position === 'body' ? (
+  <noscript set:html={bodySnippet}></noscript>
+) : null}
