@@ -110,10 +110,19 @@
 			<button class="absolute top-1/2 -translate-y-1/2 bg-primary text-white border-none rounded-full w-10 h-10 text-lg flex items-center justify-center cursor-pointer z-10 transition-colors duration-300 hover:bg-primary right-0 next-btn" aria-label="Próximo serviço" type="button">❯</button>
 		</div>
 		<div class="flex justify-center mt-5 gap-2" role="tablist" aria-label="Indicadores do carousel">
-			<button class="w-2 h-2 rounded-full bg-primary cursor-pointer transition-colors duration-300 dot active" data-index="0" role="tab" aria-selected="true" aria-label="Ir para página 1"></button>
-			<button class="w-2 h-2 rounded-full bg-gray-300 cursor-pointer transition-colors duration-300 dot" data-index="1" role="tab" aria-selected="false" aria-label="Ir para página 2"></button>
-			<button class="w-2 h-2 rounded-full bg-gray-300 cursor-pointer transition-colors duration-300 dot" data-index="2" role="tab" aria-selected="false" aria-label="Ir para página 3"></button>
-			<button class="w-2 h-2 rounded-full bg-gray-300 cursor-pointer transition-colors duration-300 dot" data-index="3" role="tab" aria-selected="false" aria-label="Ir para página 4"></button>
+			<!-- Botões maiores para área de toque (44x44) com indicador interno pequeno -->
+			<button class="w-11 h-11 rounded-full flex items-center justify-center cursor-pointer transition-colors duration-300 dot active" data-index="0" role="tab" aria-selected="true" aria-label="Ir para página 1">
+				<span class="inline-block w-2 h-2 rounded-full bg-primary indicator" aria-hidden="true"></span>
+			</button>
+			<button class="w-11 h-11 rounded-full flex items-center justify-center cursor-pointer transition-colors duration-300 dot" data-index="1" role="tab" aria-selected="false" aria-label="Ir para página 2">
+				<span class="inline-block w-2 h-2 rounded-full bg-gray-300 indicator" aria-hidden="true"></span>
+			</button>
+			<button class="w-11 h-11 rounded-full flex items-center justify-center cursor-pointer transition-colors duration-300 dot" data-index="2" role="tab" aria-selected="false" aria-label="Ir para página 3">
+				<span class="inline-block w-2 h-2 rounded-full bg-gray-300 indicator" aria-hidden="true"></span>
+			</button>
+			<button class="w-11 h-11 rounded-full flex items-center justify-center cursor-pointer transition-colors duration-300 dot" data-index="3" role="tab" aria-selected="false" aria-label="Ir para página 4">
+				<span class="inline-block w-2 h-2 rounded-full bg-gray-300 indicator" aria-hidden="true"></span>
+			</button>
 		</div>
 	</div>
 </section>
@@ -151,7 +160,13 @@
 			
 			// Update dots
 			dots.forEach((dot, index) => {
-				dot.classList.toggle('active', Math.floor(index * maxIndex / (dots.length - 1)) === currentIndex);
+				const indicator = dot.querySelector('.indicator');
+				const isActive = Math.floor(index * maxIndex / (dots.length - 1)) === currentIndex;
+				dot.classList.toggle('active', isActive);
+				if (indicator) {
+					indicator.classList.toggle('bg-primary', isActive);
+					indicator.classList.toggle('bg-gray-300', !isActive);
+				}
 			});
 			
 			// Enable/disable buttons
@@ -227,7 +242,11 @@
 
 <style>
 	/* Dot active state for carousel */
-	.dot.active {
+	.dot .indicator {
+		transition: background-color .2s;
+	}
+	.dot.active .indicator {
+		/* cor de destaque (mantive override para garantir cor independente de classes utilitárias) */
 		background-color: #ff6600 !important;
 	}
 </style>

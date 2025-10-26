@@ -31,10 +31,10 @@
 		</a>
 
 		<!-- Mobile Menu Button -->
-		<button class="mobile-menu-btn mobile-only" data-menu-toggle="button">
-			<span class="hamburger-line"></span>
-			<span class="hamburger-line"></span>
-			<span class="hamburger-line"></span>
+		<button type="button" class="mobile-menu-btn mobile-only" data-menu-toggle="button" aria-label="Abrir menu" aria-controls="mobile-menu" aria-expanded="false">
+			<span class="hamburger-line" aria-hidden="true"></span>
+			<span class="hamburger-line" aria-hidden="true"></span>
+			<span class="hamburger-line" aria-hidden="true"></span>
 		</button>
 	</div>
 </header>
@@ -43,13 +43,13 @@
 <div class="mobile-overlay" data-menu-overlay="overlay"></div>
 
 <!-- Mobile Menu -->
-<div class="mobile-menu" data-mobile-menu="menu">
+<div id="mobile-menu" class="mobile-menu" data-mobile-menu="menu" aria-hidden="true" inert>
 	<div class="mobile-header">
-		<img src="/img/logo_absolut.webp" alt="Absolut Car" class="mobile-logo" />
-		<button class="close-btn" data-menu-close="button">
-			<span class="close-line"></span>
-			<span class="close-line"></span>
-		</button>
+ 			<img src="/img/logo_absolut.webp" alt="Absolut Car" class="mobile-logo" />
+ 			<button type="button" class="close-btn" data-menu-close="button" aria-label="Fechar menu">
+ 				<span class="close-line" aria-hidden="true"></span>
+ 				<span class="close-line" aria-hidden="true"></span>
+ 			</button>
 	</div>
 	
 	<nav class="mobile-nav">
@@ -423,12 +423,20 @@
 				this.menuButton.setAttribute('data-state', 'open');
 			}
 
+			// Accessibility: indicate expanded state
+			if (this.menuButton) {
+				this.menuButton.setAttribute('aria-expanded', 'true');
+			}
+
 			if (this.overlay) {
 				this.overlay.setAttribute('data-state', 'open');
 			}
 
 			if (this.menu) {
 				this.menu.setAttribute('data-state', 'open');
+				// Remove inert so descendants become focusable when menu is open
+				if (this.menu.hasAttribute('inert')) this.menu.removeAttribute('inert');
+				this.menu.setAttribute('aria-hidden', 'false');
 			}
 
 			// Prevenir scroll do body
@@ -442,12 +450,20 @@
 				this.menuButton.removeAttribute('data-state');
 			}
 
+			// Accessibility: indicate collapsed state
+			if (this.menuButton) {
+				this.menuButton.setAttribute('aria-expanded', 'false');
+			}
+
 			if (this.overlay) {
 				this.overlay.removeAttribute('data-state');
 			}
 
 			if (this.menu) {
 				this.menu.removeAttribute('data-state');
+				this.menu.setAttribute('aria-hidden', 'true');
+				// Ensure descendants are not focusable when menu is closed
+				this.menu.setAttribute('inert', '');
 			}
 
 			// Restaurar scroll do body

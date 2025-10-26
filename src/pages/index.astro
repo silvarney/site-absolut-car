@@ -2,6 +2,7 @@
 // Página principal
 import Header from '../components/Header.astro';
 import GTM from '../components/GTM.astro';
+import FacebookPixel from '../components/FacebookPixel.astro';
 import Hero from '../components/Hero.astro';
 import SearchCard from '../components/SearchCard.astro';
 import ServicesCarousel from '../components/ServicesCarousel.astro';
@@ -29,10 +30,14 @@ import Footer from '../components/Footer.astro';
 		<noscript><link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet"></noscript>
 		{ /* GTM: script injetado no head se PUBLIC_GTM_ID estiver definido */ }
 		<GTM position="head" />
+		{ /* Facebook Pixel: injetado no head se PUBLIC_FACEBOOK_PIXEL_ID estiver definido */ }
+		<FacebookPixel position="head" />
 	</head>
 	<body class="font-roboto text-gray-800 leading-relaxed bg-white min-h-screen flex flex-col" style="padding-top: 80px;">
 		{ /* GTM: noscript logo após a abertura do body */ }
 		<GTM position="body" />
+		{ /* Facebook Pixel noscript (body) */ }
+		<FacebookPixel position="body" />
 		<Header />
 
 		<main class="flex-1">

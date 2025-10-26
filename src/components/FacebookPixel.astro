@@ -1,0 +1,33 @@
+---
+// Componente para injetar o Facebook Pixel.
+// Uso: <FacebookPixel position="head" /> e <FacebookPixel position="body" />
+const pixelId = String(import.meta.env.PUBLIC_FACEBOOK_PIXEL_ID || '');
+const position = Astro.props.position || 'head';
+const enabled = pixelId.length > 0;
+
+// Gerar o conteúdo do script no server-side para evitar referências a variáveis do lado cliente
+const headScript = enabled ? `!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '${pixelId}');
+fbq('track', 'PageView');` : '';
+
+const noscriptSrc = enabled ? `https://www.facebook.com/tr?id=${pixelId}&ev=PageView&noscript=1` : '';
+---
+
+{enabled && position === 'head' ? (
+  <!-- Meta Pixel Code -->
+  <script set:html={headScript}></script>
+  <!-- End Meta Pixel Code -->
+) : null}
+
+{enabled && position === 'body' ? (
+  <noscript>
+    <img height="1" width="1" style="display:none" alt="" src={noscriptSrc} />
+  </noscript>
+) : null}
